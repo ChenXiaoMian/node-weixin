@@ -8,6 +8,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var wechatRouter = require('./routes/wechat');
 
+// 引入token刷新
+const getToken = require('./libs/common');
+getToken();
+
 var app = express();
 
 // view engine setup
