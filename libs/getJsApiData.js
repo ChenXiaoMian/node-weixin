@@ -2,7 +2,7 @@ const axios = require('axios')
 const path = require('path')
 const url = require('url')
 
-const utils = require('./utils')
+const utils = require('../api/utils')
 const config = require('../config/wechat')
 
 const redis = require('redis');
@@ -13,7 +13,7 @@ client.on("error", function (err) {
 });
 
 function getJsApiTicket(){
-  const ACCESS_TOKEN = ''
+  var ACCESS_TOKEN = ''
   client.get("access_token", function (err, reply) {
     ACCESS_TOKEN = reply.toString()
   });

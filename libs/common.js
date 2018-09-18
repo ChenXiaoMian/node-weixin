@@ -15,22 +15,22 @@ const getAccessToken = function () {
     appid: config.appId,
     secret: config.appSecret
   }
-  // return new Promise ((resolve, reject) => {
-  //   axios.get(url, {
-  //     params
-  //   }).then((res)=>{
-  //     resolve(res.data)
-  //   }).catch((e) => {
-  //     reject(e)
-  //   })
-  // })
-
   return new Promise ((resolve, reject) => {
-    resolve({
-      "access_token": "13_18UVB82v850FUmRmZw2QYhW499GvQ8LFBk4J3cdLBe9s8OVqVihhxeitw2GF87c-8YgU4JZ9zv6MaH6MeYBQB8L1hgXwxr30sNINSfryC0MBMldKhgKX0MjMoa1S7Tdm5k_jTIwihmukDFFJZMUhAEAFSA",
-      "expires_in": 7200
+    axios.get(url, {
+      params
+    }).then((res)=>{
+      resolve(res.data)
+    }).catch((e) => {
+      reject(e)
     })
   })
+
+  // return new Promise ((resolve, reject) => {
+  //   resolve({
+  //     "access_token": "13_18UVB82v850FUmRmZw2QYhW499GvQ8LFBk4J3cdLBe9s8OVqVihhxeitw2GF87c-8YgU4JZ9zv6MaH6MeYBQB8L1hgXwxr30sNINSfryC0MBMldKhgKX0MjMoa1S7Tdm5k_jTIwihmukDFFJZMUhAEAFSA",
+  //     "expires_in": 7200
+  //   })
+  // })
 }
 
 const saveToken = function () {
