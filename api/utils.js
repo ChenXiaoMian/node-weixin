@@ -9,12 +9,13 @@ const utils = {
     return str
   },
   getNoncestr: function(){
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for(let i = 0; i < 16; i++){
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
+    // var text = "";
+    // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    // for(let i = 0; i < 16; i++){
+    //   text += possible.charAt(Math.floor(Math.random() * possible.length));
+    // }
+    // return text;
+    return Math.random().toString(36).substr(2, 15)
   },
   getTimestamp: function(){
     return new Date().valueOf();

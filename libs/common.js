@@ -1,12 +1,12 @@
 const axios = require('axios')
 const config = require('../config/wechat')
+const fs = require('fs')
+// const redis = require('redis');
+// client = redis.createClient('6379', '127.0.0.1');
 
-const redis = require('redis');
-client = redis.createClient('6379', '127.0.0.1');
-
-client.on("error", function (err) {
-  console.log("Error " + err);
-});
+// client.on("error", function (err) {
+//   console.log("Error " + err);
+// });
 
 const getAccessToken = function () {
   let url = 'https://api.weixin.qq.com/cgi-bin/token'
@@ -19,6 +19,7 @@ const getAccessToken = function () {
     axios.get(url, {
       params
     }).then((res)=>{
+      console.log(res.data)
       resolve(res.data)
     }).catch((e) => {
       reject(e)
@@ -35,8 +36,11 @@ const getAccessToken = function () {
 
 const saveToken = function () {
   getAccessToken().then((res) => {
-    let token  = res['access_token']
-    client.set("access_token", token, 'EX', 7200);    
+    let token = res['access_token']
+    fs.writeFile('./token', token, function (err) {
+      
+    });
+    // client.set("access_token", token, 'EX', 7200);    
   })
 }
 
