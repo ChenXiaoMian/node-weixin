@@ -36,11 +36,11 @@ function getJsApiTicket(){
 function getJsApiData(clientUrl){
   return new Promise((resolve, reject) => {
     getJsApiTicket().then(ticket =>{
-      const noncestr = utils.getNoncestr();
-      const timestamp = utils.getTimestamp();
+      const noncestr = utils.createNonceStr();
+      const timestamp = utils.createTimestamp();
       const result = {
         ticket: ticket,
-        signature: utils.getSign(ticket, noncestr, timestamp, clientUrl),
+        signature: utils.sign(ticket, noncestr, timestamp, clientUrl),
         timestamp: timestamp,
         noncestr: noncestr,
         appId: config.appId

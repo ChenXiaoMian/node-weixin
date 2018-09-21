@@ -11,12 +11,12 @@ const appId = config.appId
 const appSecret = config.appSecret
 const token = config.token
 
-const redis = require('redis');
-client = redis.createClient('6379', '127.0.0.1');
+// const redis = require('redis');
+// client = redis.createClient('6379', '127.0.0.1');
 
-client.on("error", function (err) {
-  console.log("Error " + err);
-});
+// client.on("error", function (err) {
+//   console.log("Error " + err);
+// });
 
 const wxAuth = {
   // 验证消息的确来自微信服务器
@@ -106,7 +106,7 @@ const wxAuth = {
     axios.get(url).then((res)=>{
       let result = res.data
       request.access_token = result.request
-      client.set("access_token", "string val", redis.print);
+      // client.set("access_token", "string val", redis.print);
       next()
     }).catch((e) => {
       console.log(e)
